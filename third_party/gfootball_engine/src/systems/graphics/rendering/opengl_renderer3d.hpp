@@ -17,9 +17,11 @@
 
 #ifndef _HPP_GRAPHICS3D_OPENGL
 #define _HPP_GRAPHICS3D_OPENGL
+/*
 #ifdef __linux__
 #include <EGL/egl.h>
 #endif
+*/
 
 #include "interface_renderer3d.hpp"
 
@@ -121,11 +123,13 @@ namespace blunted {
     protected:
       SDL_GLContext context = 0;
       SDL_Window* window = nullptr;
+/*
 #ifdef __linux__
       EGLDisplay egl_display = nullptr;
       EGLSurface egl_surface;
       EGLContext egl_context;
 #endif
+*/
       int context_width, context_height, context_bpp;
 
       float cameraNear = 0.0f;
@@ -155,9 +159,11 @@ namespace blunted {
       void DeleteSimpleVertexBuffer(VertexBufferID vertexBufferID);
       void InitializeOverlayAndQuadBuffers();
       void CreateContextSdl();
+/*
 #ifdef __linux__
       void CreateContextEgl();
 #endif
+*/
   };
 }
 
