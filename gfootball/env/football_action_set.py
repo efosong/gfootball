@@ -152,6 +152,37 @@ action_set_v1 = [
 
 action_set_v2 = action_set_v1 + [action_builtin_ai]
 
+action_set_simple12 = [
+    action_idle,
+    action_left,
+    action_top_left,
+    action_top,
+    action_top_right,
+    action_right,
+    action_bottom_right,
+    action_bottom,
+    action_bottom_left,
+    action_short_pass,
+    action_shot,
+    action_release_direction,
+]
+
+action_set_simple13 = [
+    action_idle,
+    action_left,
+    action_top_left,
+    action_top,
+    action_top_right,
+    action_right,
+    action_bottom_right,
+    action_bottom,
+    action_bottom_left,
+    action_long_pass,
+    action_short_pass,
+    action_shot,
+    action_release_direction,
+]
+
 # Special action set that includes all the core actions in the same order.
 full_action_set = action_set_v2 + [
     action_keeper_rush,
@@ -172,6 +203,8 @@ full_action_set = action_set_v2 + [
 action_set_dict = {
     "default": action_set_v1,
     "v2": action_set_v2,
+    "simple12": action_set_simple12,
+    "simple13": action_set_simple13,
     # "full" action set is needed by the play_game script.
     # Don't use it for training models.
     "full": full_action_set,
