@@ -13,12 +13,18 @@ def build_scenario(builder):
     # Defence Team
     builder.SetTeam(Team.e_Left)
     builder.AddPlayer(-1.0, 0.0, e_PlayerRole_GK, controllable=False)
+    grid = 1/12
+    grid_eps = 1/36
+    #                min_x ,    min_y       max_x,   max_y
+    spawn_box_LB = [-7*grid, -grid_eps], [-10*grid, -3*grid]
+    spawn_box_RB = [-7*grid,  grid_eps], [-10*grid,  3*grid]
+    spawn_box_LM = [ 2*grid, -grid_eps], [  6*grid, -4*grid]
+    spawn_box_RM = [ 2*grid,  grid_eps], [  6*grid,  4*grid]
+
     # Left Back
-    spawn_box_LB = [-0.33, -0.05], [-0.75, -0.33]
     location_LB = np.random.uniform(*spawn_box_LB)
     builder.AddPlayer(*location_LB, e_PlayerRole_LB)
     # Right Back
-    spawn_box_RB = [-0.33, 0.05], [-0.75, 0.33]
     location_RB = np.random.uniform(*spawn_box_RB)
     builder.AddPlayer(*location_RB, e_PlayerRole_RB)
         
@@ -26,11 +32,9 @@ def build_scenario(builder):
     builder.SetTeam(Team.e_Right)
     builder.AddPlayer(-1.0, 0.0, e_PlayerRole_GK, controllable=False)
     # Left Mid
-    spawn_box_LM = [0, -0.05], [0.3, -0.33]
     location_LM = np.random.uniform(*spawn_box_LM)
     builder.AddPlayer(*location_LM, e_PlayerRole_LM)
     # Right Mid
-    spawn_box_RM = [0, 0.05], [0.3, 0.33]
     location_RM = np.random.uniform(*spawn_box_RM)
     builder.AddPlayer(*location_RM, e_PlayerRole_RM)
     # Spawn the ball
