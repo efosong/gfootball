@@ -3,7 +3,7 @@ import numpy as np
 
 # TODO how to set a random seed?
 def build_scenario(builder):
-    builder.config().game_duration = 400
+    builder.config().game_duration = 250
     builder.config().deterministic = False
     builder.config().offsides = False
     builder.config().end_episode_on_score = True
@@ -30,9 +30,9 @@ def build_scenario(builder):
     # Spawn the ball
     # choose one of the attackers to give the ball at random
     if np.random.random() > 0.5:
-        location_ball = (location_LM[0]+0.05), location_LM[1]
+        location_ball = (location_LM[0]+0.02), location_LM[1]
     else:
-        location_ball = (location_RM[0]+0.05), location_RM[1]
+        location_ball = (location_RM[0]+0.02), location_RM[1]
     builder.SetBallPosition(*location_ball)
  
     # Attack Team
