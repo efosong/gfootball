@@ -13,13 +13,13 @@ def build_scenario(builder):
     # Defence Team
     builder.SetTeam(Team.e_Left)
     builder.AddPlayer(-1.0, 0.0, e_PlayerRole_GK, controllable=False)
-    grid = 1/12
-    grid_eps = 1/36
+    grid = 1 / 12
+    grid_eps = 1 / 36
     #                min_x ,    min_y       max_x,   max_y
-    spawn_box_LM = [ 5*grid, -grid_eps], [  8*grid, -3*grid]
-    spawn_box_RM = [ 5*grid,  grid_eps], [  8*grid,  3*grid]
-    spawn_box_LB = [-9*grid, -grid_eps], [-11*grid, -3*grid]
-    spawn_box_RB = [-9*grid,  grid_eps], [-11*grid,  3*grid]
+    spawn_box_LM = [5 * grid, -grid_eps], [8 * grid, -3 * grid]
+    spawn_box_RM = [5 * grid, grid_eps], [8 * grid, 3 * grid]
+    spawn_box_LB = [-9 * grid, -grid_eps], [-11 * grid, -3 * grid]
+    spawn_box_RB = [-9 * grid, grid_eps], [-11 * grid, 3 * grid]
 
     # Left Mid
     location_LM = np.random.uniform(*spawn_box_LM)
@@ -30,11 +30,11 @@ def build_scenario(builder):
     # Spawn the ball
     # choose one of the attackers to give the ball at random
     if np.random.random() > 0.5:
-        location_ball = (location_LM[0]+0.02), location_LM[1]
+        location_ball = (location_LM[0] + 0.02), location_LM[1]
     else:
-        location_ball = (location_RM[0]+0.02), location_RM[1]
+        location_ball = (location_RM[0] + 0.02), location_RM[1]
     builder.SetBallPosition(*location_ball)
- 
+
     # Attack Team
     builder.SetTeam(Team.e_Right)
     builder.AddPlayer(-1.0, 0.0, e_PlayerRole_GK, controllable=False)

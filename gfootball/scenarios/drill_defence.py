@@ -9,17 +9,17 @@ def build_scenario(builder):
     builder.config().end_episode_on_score = True
     builder.config().end_episode_on_out_of_play = True
     builder.config().end_episode_on_possession_change = True
-    
+
     # Defence Team
     builder.SetTeam(Team.e_Left)
     builder.AddPlayer(-1.0, 0.0, e_PlayerRole_GK, controllable=False)
-    grid = 1/12
-    grid_eps = 1/36
+    grid = 1 / 12
+    grid_eps = 1 / 36
     #                min_x ,    min_y       max_x,   max_y
-    spawn_box_LB = [-7*grid, -grid_eps], [-10*grid, -3*grid]
-    spawn_box_RB = [-7*grid,  grid_eps], [-10*grid,  3*grid]
-    spawn_box_LM = [ 2*grid, -grid_eps], [  6*grid, -4*grid]
-    spawn_box_RM = [ 2*grid,  grid_eps], [  6*grid,  4*grid]
+    spawn_box_LB = [-7 * grid, -grid_eps], [-10 * grid, -3 * grid]
+    spawn_box_RB = [-7 * grid, grid_eps], [-10 * grid, 3 * grid]
+    spawn_box_LM = [2 * grid, -grid_eps], [6 * grid, -4 * grid]
+    spawn_box_RM = [2 * grid, grid_eps], [6 * grid, 4 * grid]
 
     # Left Back
     location_LB = np.random.uniform(*spawn_box_LB)
@@ -27,7 +27,7 @@ def build_scenario(builder):
     # Right Back
     location_RB = np.random.uniform(*spawn_box_RB)
     builder.AddPlayer(*location_RB, e_PlayerRole_RB)
-        
+
     # Attack Team
     builder.SetTeam(Team.e_Right)
     builder.AddPlayer(-1.0, 0.0, e_PlayerRole_GK, controllable=False)
@@ -40,7 +40,7 @@ def build_scenario(builder):
     # Spawn the ball
     # choose one of the attackers to give the ball at random
     if np.random.random() > 0.5:
-        location_ball = -(location_LM[0]+0.05), -location_LM[1]
+        location_ball = -(location_LM[0] + 0.05), -location_LM[1]
     else:
-        location_ball = -(location_RM[0]+0.05), -location_RM[1]
+        location_ball = -(location_RM[0] + 0.05), -location_RM[1]
     builder.SetBallPosition(*location_ball)
