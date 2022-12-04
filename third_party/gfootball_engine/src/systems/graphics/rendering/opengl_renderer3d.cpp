@@ -28,6 +28,7 @@
 #include <GL/gl.h>
 #endif
 
+/*
 #ifdef __linux__
 #include <GL/glext.h>
 #define EGL_EGLEXT_PROTOTYPES
@@ -36,6 +37,7 @@
 #elif defined(WIN32)
 #include <SDL2/SDL_opengl_glext.h>
 #endif
+*/
 
 #include <cmath>
 #include "wrap_SDL.h"
@@ -434,6 +436,7 @@ void OpenGLRenderer3D::CreateContextSdl() {
 #undef SDL_PROC
 }
 
+/*
 #ifdef __linux__
 // Helper macro to check for EGL errors.
 #define FAIL_IF_EGL_ERROR(egl_expr)                             \
@@ -527,6 +530,7 @@ void OpenGLRenderer3D::CreateContextEgl() {
 #undef SDL_PROC
 }
 #endif
+*/
 
 bool OpenGLRenderer3D::CreateContext(int width, int height, int bpp,
                                      bool fullscreen) {
@@ -537,6 +541,7 @@ bool OpenGLRenderer3D::CreateContext(int width, int height, int bpp,
   // default values
   this->cameraNear = 30.0;
   this->cameraFar = 270.0;
+/*
 #ifdef __linux__
   if (!getenv("DISPLAY")) {
     std::cout << "No DISPLAY defined, doing off-screen rendering" << std::endl;
@@ -545,8 +550,9 @@ bool OpenGLRenderer3D::CreateContext(int width, int height, int bpp,
     CreateContextSdl();
   }
 #else
+*/
   CreateContextSdl();
-#endif
+//#endif
   largest_supported_anisotropy = 2;
   mapping.glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT,
                       &largest_supported_anisotropy);
