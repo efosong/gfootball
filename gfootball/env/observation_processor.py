@@ -532,7 +532,7 @@ class ObservationProcessor(object):
             self._dump_directory = self._config["tracesdir"]
             if WRITE_FILES:
                 if not os.path.exists(self._dump_directory):
-                    os.makedirs(self._dump_directory)
+                    os.makedirs(self._dump_directory, exist_ok=True)
         dump_name = "{2}{3}{0}_{1}".format(
             name,
             datetime.datetime.now().strftime("%Y%m%d-%H%M%S%f"),
